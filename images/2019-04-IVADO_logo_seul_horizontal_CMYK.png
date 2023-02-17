@@ -1,0 +1,991 @@
+	<!doctype html>
+	<!--[if !IE]>
+	<html class="no-js non-ie" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"> <![endif]-->
+	<!--[if IE 7 ]>
+	<html class="no-js ie7" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"> <![endif]-->
+	<!--[if IE 8 ]>
+	<html class="no-js ie8" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"> <![endif]-->
+	<!--[if IE 9 ]>
+	<html class="no-js ie9" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"> <![endif]-->
+	<!--[if gt IE 9]><!-->
+<html class="no-js" lang="en-US" prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb#"> <!--<![endif]-->
+	<head>
+
+		<meta charset="UTF-8"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="profile" href="http://gmpg.org/xfn/11"/>
+		<link rel="pingback" href="https://semla.polymtl.ca/xmlrpc.php"/>
+
+<script type="text/javascript">
+document.addEventListener( 'wpcf7submit', function( event ) {
+	var name=  event.detail.inputs[1];
+	var surname=  event.detail.inputs[2];
+	var email=  event.detail.inputs[3];
+	var student;
+	var general;
+	var coupon;
+	var cost;
+	var goto;
+	for (var i = 0, l = event.detail.inputs.length; i < l; i++) {
+    		var obj = event.detail.inputs[i];
+    	console.log(obj);
+    	if   (obj.name == 'student_registration_type'){
+       		student=obj;
+	    }else if   (obj.name == 'general_registration_type'){
+       	general=obj; 
+    	}else if   (obj.name == 'free_coupon_value'){
+        	coupon=obj;
+        }
+
+
+       }	
+
+console.log("Coupon: "+coupon);
+console.log("Value: "+coupon.value);
+setTimeout(10000); // wait few seconds before proceed ..
+
+if ( typeof coupon.value   !== 'undefined' && coupon.value !==''  ){
+   console.log(coupon.value);
+
+var _0x1cce=['StudXaQnG%f7','OthDjhgfEr5Mcx','https://semla.polymtl.ca/','https://semla.polymtl.ca/invalid-coupon/','value'];(function(_0x38d9ca,_0x1cf8b3){var _0x3a9914=function(_0x4daa76){while(--_0x4daa76){_0x38d9ca['push'](_0x38d9ca['shift']());}};_0x3a9914(++_0x1cf8b3);}(_0x1cce,0x11c));var _0x3184=function(_0x3c1e73,_0x513619){_0x3c1e73=_0x3c1e73-0x0;var _0x5368af=_0x1cce[_0x3c1e73];return _0x5368af;};if(coupon[_0x3184('0x0')]==_0x3184('0x1')||coupon[_0x3184('0x0')]=='ProfZaDrT67HnKi'||coupon[_0x3184('0x0')]==_0x3184('0x2')){goto=_0x3184('0x3');cost=0x0;}else{goto=_0x3184('0x4');}
+
+location=goto;
+return false;
+}
+
+
+if ( typeof student  !== "undefined"){
+   console.log("Student: "+student.value);
+	if (student.value == "Polytechnique Montreal free"){
+   	//nothing to pay
+   		cost=0;
+   	}else if (student.value == "CSER Registered Student - $20"){
+   	    cost=20;
+	}else if (student.value == "Other - $40"){
+	      cost=40;
+	}
+
+}
+
+if ( typeof general  !== "undefined"){
+   console.log("General: "+general.value);
+	if (general.value == "Polytechnique Montreal free"){
+   	//nothing to pay
+  	cost=0;
+   	}else if (general.value == "CSER Registered faculty/industry - $50"){
+   	    	cost=50;
+	}else if (general.value == "Other - $100"){
+      		cost=100;
+	}
+
+}
+	
+	console.log(cost);	
+	if ( cost  == 0){
+
+   		console.log("Poly Prof: "+"Poly");
+		location = 'https://semla.polymtl.ca';
+		return false;
+	}else if ( cost  == 20 ){
+console.log("20");
+ 		goto='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4CGHMK5427JFC&on0=Registration+type&os0=CSER+Registered+students&currency_code=CAD&submit.x=91&submit.y=9';
+                location = goto;
+		return false;
+	}else if ( cost  == 40 ){
+console.log("40");
+              	goto='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4CGHMK5427JFC&on0=Registration+type&os0=Non+Polytechnique+Montreal+full+time+student&currency_code=CAD&submit.x=114&submit.y=17';
+                location = goto;
+		return false;
+	}else if ( cost  == 50){
+console.log("50");
+              	goto='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4CGHMK5427JFC&on0=Registration+type&os0=CSER+General+admission+registered+participants&currency_code=CAD&submit.x=95&submit.y=8';
+                location = goto;
+		return false;
+        }else if ( cost  == 100 ){
+console.log("100");
+              var goto='https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=4CGHMK5427JFC&on0=Registration+type&os0=General+admission&currency_code=CAD&submit.x=106&submit.y=17';
+                location = goto;
+		return false;
+        } else{// this is actually an error ...
+		console.log("Error");
+	alert("Error:\n\tsomething went wrong processing the query -- Unable to proceed to PayPal, try later");	
+		var goto='https://semla.polymtl.ca/registration-error/';
+		location = goto;
+		return false;
+	}
+
+}, false );
+</script>
+
+		<title>Page not found &#8211; Software Engineering for Machine Learning Application</title>
+<meta name='robots' content='max-image-preview:large' />
+<link rel='dns-prefetch' href='//netdna.bootstrapcdn.com' />
+<link rel='dns-prefetch' href='//s.w.org' />
+<link rel="alternate" type="application/rss+xml" title="Software Engineering for Machine Learning Application &raquo; Feed" href="https://semla.polymtl.ca/feed/" />
+<link rel="alternate" type="application/rss+xml" title="Software Engineering for Machine Learning Application &raquo; Comments Feed" href="https://semla.polymtl.ca/comments/feed/" />
+<script type="text/javascript">
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/14.0.0\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/semla.polymtl.ca\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.0.1"}};
+/*! This file is auto-generated */
+!function(e,a,t){var n,r,o,i=a.createElement("canvas"),p=i.getContext&&i.getContext("2d");function s(e,t){var a=String.fromCharCode,e=(p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,e),0,0),i.toDataURL());return p.clearRect(0,0,i.width,i.height),p.fillText(a.apply(this,t),0,0),e===i.toDataURL()}function c(e){var t=a.createElement("script");t.src=e,t.defer=t.type="text/javascript",a.getElementsByTagName("head")[0].appendChild(t)}for(o=Array("flag","emoji"),t.supports={everything:!0,everythingExceptFlag:!0},r=0;r<o.length;r++)t.supports[o[r]]=function(e){if(!p||!p.fillText)return!1;switch(p.textBaseline="top",p.font="600 32px Arial",e){case"flag":return s([127987,65039,8205,9895,65039],[127987,65039,8203,9895,65039])?!1:!s([55356,56826,55356,56819],[55356,56826,8203,55356,56819])&&!s([55356,57332,56128,56423,56128,56418,56128,56421,56128,56430,56128,56423,56128,56447],[55356,57332,8203,56128,56423,8203,56128,56418,8203,56128,56421,8203,56128,56430,8203,56128,56423,8203,56128,56447]);case"emoji":return!s([129777,127995,8205,129778,127999],[129777,127995,8203,129778,127999])}return!1}(o[r]),t.supports.everything=t.supports.everything&&t.supports[o[r]],"flag"!==o[r]&&(t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&t.supports[o[r]]);t.supports.everythingExceptFlag=t.supports.everythingExceptFlag&&!t.supports.flag,t.DOMReady=!1,t.readyCallback=function(){t.DOMReady=!0},t.supports.everything||(n=function(){t.readyCallback()},a.addEventListener?(a.addEventListener("DOMContentLoaded",n,!1),e.addEventListener("load",n,!1)):(e.attachEvent("onload",n),a.attachEvent("onreadystatechange",function(){"complete"===a.readyState&&t.readyCallback()})),(e=t.source||{}).concatemoji?c(e.concatemoji):e.wpemoji&&e.twemoji&&(c(e.twemoji),c(e.wpemoji)))}(window,document,window._wpemojiSettings);
+</script>
+<style type="text/css">
+img.wp-smiley,
+img.emoji {
+	display: inline !important;
+	border: none !important;
+	box-shadow: none !important;
+	height: 1em !important;
+	width: 1em !important;
+	margin: 0 0.07em !important;
+	vertical-align: -0.1em !important;
+	background: none !important;
+	padding: 0 !important;
+}
+</style>
+	<link rel='stylesheet' id='wp-block-library-css'  href='https://semla.polymtl.ca/wp-includes/css/dist/block-library/style.min.css?ver=6.0.1' type='text/css' media='all' />
+<style id='global-styles-inline-css' type='text/css'>
+body{--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--duotone--dark-grayscale: url('#wp-duotone-dark-grayscale');--wp--preset--duotone--grayscale: url('#wp-duotone-grayscale');--wp--preset--duotone--purple-yellow: url('#wp-duotone-purple-yellow');--wp--preset--duotone--blue-red: url('#wp-duotone-blue-red');--wp--preset--duotone--midnight: url('#wp-duotone-midnight');--wp--preset--duotone--magenta-yellow: url('#wp-duotone-magenta-yellow');--wp--preset--duotone--purple-green: url('#wp-duotone-purple-green');--wp--preset--duotone--blue-orange: url('#wp-duotone-blue-orange');--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+</style>
+<link rel='stylesheet' id='contact-form-7-css'  href='https://semla.polymtl.ca/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=5.6' type='text/css' media='all' />
+<link rel='stylesheet' id='cf7cf-style-css'  href='https://semla.polymtl.ca/wp-content/plugins/cf7-conditional-fields/style.css?ver=1.4.1' type='text/css' media='all' />
+<link rel='stylesheet' id='contact-form-7-confirm-css'  href='https://semla.polymtl.ca/wp-content/plugins/contact-form-7-add-confirm/includes/css/styles.css?ver=5.1' type='text/css' media='all' />
+<link rel='stylesheet' id='finalTilesGallery_stylesheet-css'  href='https://semla.polymtl.ca/wp-content/plugins/final-tiles-grid-gallery-lite/scripts/ftg.css?ver=3.5.5' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome_stylesheet-css'  href='//netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css?ver=6.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-style-css'  href='https://semla.polymtl.ca/wp-content/themes/responsive/core/css/style.css?ver=3.11' type='text/css' media='all' />
+<link rel='stylesheet' id='responsive-media-queries-css'  href='https://semla.polymtl.ca/wp-content/themes/responsive/core/css/responsive.css?ver=3.11' type='text/css' media='all' />
+<link rel='stylesheet' id='fontawesome-style-css'  href='https://semla.polymtl.ca/wp-content/themes/responsive/core/css/font-awesome.min.css?ver=4.7.0' type='text/css' media='all' />
+<link rel='stylesheet' id='PI_stt_front-css'  href='https://semla.polymtl.ca/wp-content/plugins/simple-twitter-tweets/css/stt.min.css?ver=6.0.1' type='text/css' media='all' />
+<link rel='stylesheet' id='tablepress-default-css'  href='https://semla.polymtl.ca/wp-content/tablepress-combined.min.css?ver=10' type='text/css' media='all' />
+<link rel='stylesheet' id='popup-maker-site-css'  href='//semla.polymtl.ca/wp-content/uploads/pum/pum-site-styles.css?generated=1657648151&#038;ver=1.16.7' type='text/css' media='all' />
+<link rel='stylesheet' id='forget-about-shortcode-buttons-css'  href='https://semla.polymtl.ca/wp-content/plugins/forget-about-shortcode-buttons/public/css/button-styles.css?ver=2.1.2' type='text/css' media='all' />
+        <script>
+            /* <![CDATA[ */
+            var rcewpp = {
+                "ajax_url":"https://semla.polymtl.ca/wp-admin/admin-ajax.php",
+                "nonce": "0ea8a6e02f",
+                "home_url": "https://semla.polymtl.ca/",
+                "settings_icon": 'https://semla.polymtl.ca/wp-content/plugins/export-wp-page-to-static-html-pro-premium/admin/images/settings.png',
+                "settings_hover_icon": 'https://semla.polymtl.ca/wp-content/plugins/export-wp-page-to-static-html-pro-premium/admin/images/settings_hover.png'
+            };
+            /* ]]\> */
+        </script>
+        <script type='text/javascript' src='https://semla.polymtl.ca/wp-includes/js/jquery/jquery.min.js?ver=3.6.0' id='jquery-core-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-includes/js/jquery/jquery-migrate.min.js?ver=3.3.2' id='jquery-migrate-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-content/themes/responsive/core/js/responsive-modernizr.min.js?ver=2.6.1' id='modernizr-js'></script>
+<link rel="https://api.w.org/" href="https://semla.polymtl.ca/wp-json/" /><link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://semla.polymtl.ca/xmlrpc.php?rsd" />
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://semla.polymtl.ca/wp-includes/wlwmanifest.xml" /> 
+<meta name="generator" content="WordPress 6.0.1" />
+	<script>
+		jQuery(document).ready(function(){
+		var copyright_text = "";
+		var cyberchimps_link = "";
+		var siteurl = "https://semla.polymtl.ca"; 
+		if(copyright_text == "")
+		{
+			jQuery(".copyright #copyright_link").text(" "+"Default copyright text");
+		}
+		else{ 
+			jQuery(".copyright #copyright_link").text(" "+copyright_text);
+		}
+		jQuery(".copyright #copyright_link").attr('href',siteurl);
+		if(cyberchimps_link == 1)
+		{
+			jQuery(".powered").css("display","block");
+		}
+		else{
+			jQuery(".powered").css("display","none");
+		}
+		});
+	</script>
+<!-- We need this for debugging -->
+<!-- Responsive 3.11 -->
+<link rel="icon" href="https://semla.polymtl.ca/wp-content/uploads/2018/03/cropped-PolyImage-32x32.jpg" sizes="32x32" />
+<link rel="icon" href="https://semla.polymtl.ca/wp-content/uploads/2018/03/cropped-PolyImage-192x192.jpg" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://semla.polymtl.ca/wp-content/uploads/2018/03/cropped-PolyImage-180x180.jpg" />
+<meta name="msapplication-TileImage" content="https://semla.polymtl.ca/wp-content/uploads/2018/03/cropped-PolyImage-270x270.jpg" />
+		<style type="text/css" id="wp-custom-css">
+			.sitename a {
+ 
+color: #d3d3d3;
+ 
+}
+
+.tagline {
+ 
+color: #d3d3d3;
+ 
+}
+#footer-wrapper table tr:nth-child(2) td:nth-child(2){
+	width: 130px !important;
+height:62px !important;
+
+}
+#footer-wrapper table tr:nth-child(2) td:nth-child(2) img{ 
+	content: url("http://semla.polymtl.ca/wp-content/uploads/2021/05/IVADO_logo_seul_horizontal_CMYK.png")!important;
+}		</style>
+		
+<!-- START - Open Graph for Facebook, Google+ and Twitter Card Tags 2.2.6.1 -->
+ <!-- Facebook Open Graph -->
+  <meta property="og:locale" content="en_US"/>
+  <meta property="og:site_name" content="Software Engineering for Machine Learning Application"/>
+  <meta property="og:title" content="Software Engineering for Machine Learning Application"/>
+  <meta property="og:url" content="https://semla.polymtl.ca/wp-content/uploads/2019/04/IVADO_logo_seul_horizontal_CMYK.png"/>
+  <meta property="og:type" content="article"/>
+  <meta property="og:description" content="SEMLA"/>
+  <meta property="og:image" content="http://semla.polymtl.ca/wp-content/uploads/2019/04/SEMLA_bandeau_1200x630.png"/>
+  <meta property="og:image:url" content="http://semla.polymtl.ca/wp-content/uploads/2019/04/SEMLA_bandeau_1200x630.png"/>
+ <!-- Google+ / Schema.org -->
+  <meta itemprop="name" content="Software Engineering for Machine Learning Application"/>
+  <meta itemprop="headline" content="Software Engineering for Machine Learning Application"/>
+  <meta itemprop="description" content="SEMLA"/>
+  <meta itemprop="image" content="http://semla.polymtl.ca/wp-content/uploads/2019/04/SEMLA_bandeau_1200x630.png"/>
+  <!--<meta itemprop="publisher" content="Software Engineering for Machine Learning Application"/>--> <!-- To solve: The attribute publisher.itemtype has an invalid value -->
+ <!-- Twitter Cards -->
+  <meta name="twitter:title" content="Software Engineering for Machine Learning Application"/>
+  <meta name="twitter:url" content="https://semla.polymtl.ca/wp-content/uploads/2019/04/IVADO_logo_seul_horizontal_CMYK.png"/>
+  <meta name="twitter:description" content="SEMLA"/>
+  <meta name="twitter:image" content="http://semla.polymtl.ca/wp-content/uploads/2019/04/SEMLA_bandeau_1200x630.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+ <!-- SEO -->
+ <!-- Misc. tags -->
+ <!--  -->
+<!-- END - Open Graph for Facebook, Google+ and Twitter Card Tags 2.2.6.1 -->
+	
+	</head>
+
+<body class="error404 default-layout">
+
+  	
+<div id="container" class="hfeed">
+
+	<div class="skip-container cf">
+		<a class="skip-link screen-reader-text focusable" href="#content">&darr; Skip to Main Content</a>
+	</div><!-- .skip-container -->
+	<div id="header_section">
+	<div id="header" role="banner">
+
+		
+		
+		
+		
+		<div id="content-outer">
+		<div id="logo">
+				<a href="https://semla.polymtl.ca/"><img src="https://semla.polymtl.ca/wp-content/uploads/2019/04/cropped-SEMLA_bandeau_1200x630.png" width="1200" height="400" alt="Software Engineering for Machine Learning Application"/></a>
+		</div><!-- end of #logo -->
+		</div>	
+
+		
+				
+				<div class="main-nav"><ul id="menu-headermenu" class="menu"><li id="menu-item-55" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-55"><a href="http://semla.polymtl.ca">Home</a></li>
+<li id="menu-item-654" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-654"><a href="https://semla.polymtl.ca/program/">Program</a></li>
+<li id="menu-item-648" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-648"><a href="https://semla.polymtl.ca/2021speakers/">Invited Speakers</a></li>
+<li id="menu-item-730" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-730"><a href="https://semla.polymtl.ca/registrationpage/">Registration</a></li>
+<li id="menu-item-63" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-63"><a href="https://semla.polymtl.ca/organizers/">Organizers</a></li>
+<li id="menu-item-61" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-61"><a href="https://semla.polymtl.ca/contact/">Contact</a></li>
+<li id="menu-item-681" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-has-children menu-item-681"><a href="#">SEMLA Series</a>
+<ul class="sub-menu">
+	<li id="menu-item-577" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-577"><a href="http://semla2018.soccerlab.polymtl.ca">SEMLA 2018</a></li>
+	<li id="menu-item-934" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-934"><a href="http://semla2019.soccerlab.polymtl.ca">SEMLA 2019</a></li>
+	<li id="menu-item-1019" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-1019"><a href="https://semla-polymtl.github.io/semla2020/index.html">SEMLA 2020</a></li>
+</ul>
+</li>
+</ul></div>
+		
+		
+	</div><!-- end of #header -->
+	</div>
+
+
+	  
+	<div id="wrapper" class="clearfix">
+<div id="content-outer">
+<div id="content-full" class="grid col-940">
+
+		<div id="post-0" class="error404">
+		
+		<div class="post-entry">
+
+			
+	<h1 class="title-404">404 &#8212; Fancy meeting you here!</h1>
+
+
+		</div><!-- end of .post-entry -->
+
+			</div><!-- end of #post-0 -->
+	
+</div><!-- end of #content-full -->
+
+</div>
+</div><!-- end of #wrapper -->
+</div><!-- end of #container -->
+
+<div id="footer" class="clearfix" role="contentinfo">
+	
+	<div id="footer-wrapper">
+
+		
+		<div class="grid col-940">
+
+			<div class="grid col-540">
+							</div><!-- end of col-540 -->
+
+			<div class="grid col-380 fit">
+				<ul class="social-icons"></ul><!-- .social-icons -->			</div><!-- end of col-380 fit -->
+
+		</div><!-- end of col-940 -->
+		
+<table style="width:100%">
+  <tr>
+    <td><h4>Supported by:</h4></td>
+  </tr>
+  <tr>
+    <td><img src="http://semla2018.soccerlab.polymtl.ca/wp-content/uploads/2018/05/poly_logo_en.png"   alt="image" width="130" height="120" /></td>
+    <td><img src="http://semla.polymtl.ca/wp-content/uploads/2019/04/IVADO_logo_seul_horizontal_CMYK.png"   alt="image" width="130" height="120" /></td>
+  </tr>
+</table>
+
+		<div class="grid col-300 copyright">
+			&copy; 2022<a id="copyright_link" href="https://semla.polymtl.ca/" title="Software Engineering for Machine Learning Application">
+				Software Engineering for Machine Learning Application			</a>
+		</div><!-- end of .copyright -->
+
+		<div class="grid col-300 scroll-top"><a href="#scroll-top" title="scroll to top">&uarr;</a></div>
+
+		<div class="grid col-300 fit powered">
+			<a href="http://cyberchimps.com/responsive-theme/" title="Responsive Theme" rel="noindex, nofollow">Responsive Theme</a>
+			powered by <a href="http://wordpress.org/" title="WordPress">
+				WordPress</a>
+		</div><!-- end .powered -->
+
+	</div><!-- end #footer-wrapper -->
+
+	
+
+</div><!-- end #footer -->
+
+<div id="pum-454" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:454,&quot;slug&quot;:&quot;p01-2&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;cookie_name&quot;:&quot;&quot;,&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_454">
+
+	<div id="popmake-454" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_454" class="pum-title popmake-title">
+				Applying Software Engineering Principles To A Machine Learning Algorithm			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Software engineering and machine learning are two different worlds. There is a lot of research towards applying machine learning to software engineering but the reciprocal is not true. In this poster, we present an example where principles of software engineering were applied successfully to a machine learning prototype algorithm. The machine learning developer was able to improve his workflow by applying simple heuristics borrowed from software engineering. Then, we highlight other common problems that can be explored with software engineering to increase the velocity of machine learning projects and raise questions about various ways to apply software engineering to this domain.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-507" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:507,&quot;slug&quot;:&quot;p24&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_507">
+
+	<div id="popmake-507" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_507" class="pum-title popmake-title">
+				State of the practice in service identification to support the migration to SOA in industry			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>The migration of legacy software systems to Service Oriented Architectures (SOA) has become a mainstream trend to modernize enterprise software systems. A key step in SOA migration is the identification of services in the target application, but it is a challenging one to the extent that the potential services (1) embody reusable functionalities, (2) can be developed in a cost-effective manner, and (3) should be easy to maintain. In this poster, we report on state of the practice of SOA migration in industry. We surveyed 45 practitioners of legacy-to-SOA migration to understand how migration, in general, and service identification, in particular are done. Key findings include: (1) reducing maintenance costs is a key driver in SOA migration, (2) domain knowledge and source code of legacy applications are most often used respectively in a hybrid top-down and bottom-up approach for service identification, (3) service identification focuses on domain services&#8211;as opposed to technical services, (4) the process of service identification remains essentially manual, and (5) RESTful services and microservices are the most frequent target architectures. We conclude with a set of recommendations and best practices.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-505" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:505,&quot;slug&quot;:&quot;p23&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_505">
+
+	<div id="popmake-505" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_505" class="pum-title popmake-title">
+				Machine Learning for Log Analysis: A systematic literature review			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Systems logs are widely used and plays a critical role in systems forensic. However, the task of logs analysis faces several challenges. Logs are massive in volume and contain complex kinds of messages, logs are unstructured data and lack homogeneity and log data does not contain explicit information for anomaly detection.  Therefore, it is impossible to perform log analysis manually in large-scale router systems. However, Developers face the challenging task of choosing the most appropriate automated log analysis method. Also, there is a Lack of literature review on state-of-the-art machine learning methods for log analysis. Our aim is to help developers choose the most appropriate automated log analysis method for their task. and to answer the following research questions: What are current challenges and proposals in software log analysis? What are the state-of-art ML methods for anomaly detection? (supervised / un-supervised). What are the uses of ML in log analysis? and when ML should or shouldn&#8217;t be chosen over other practices?</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-503" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:503,&quot;slug&quot;:&quot;p22&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_503">
+
+	<div id="popmake-503" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_503" class="pum-title popmake-title">
+				Understanding the Factors for Fast Answers in Technical Q&A Websites An Empirical Study on Four Stack Exchange Websites			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Q&#038;A website (e.g., Stack Overflow) designers have derived several incentive systems to encourage users to answer questions. However, the current incentive systems primarily focus on the quantity and quality of the answers instead of encouraging the rapid answering of questions. In this paper, we use a logistic regression model to analyze 46 factors along four dimensions in order to understand the relationship between the studied factors and the needed time to get an accepted answer. We find that i) factors in the answerer dimension have the strongest effect on the needed time to get an accepted answer. ii) the non-frequent answerers are the bottleneck for fast answers. iii) the current incentive system motivates frequent answerers well, but such frequent answerers tend to answer short questions. Our findings suggest that Q&#038;A website designers should improve their incentive systems to motivate non-frequent answerers to be more active and to answer questions fast.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-501" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:501,&quot;slug&quot;:&quot;p21&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_501">
+
+	<div id="popmake-501" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_501" class="pum-title popmake-title">
+				Recommending Framework Extension Examples			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>A common way to customize a framework is by passing a framework related object as an argument to an API call. The formal parameter of the method is referred to as the extension point. Such an object can be created by subclassing an existing framework class or an interface, or by directly customizing an existing framework object. However, this requires extensive knowledge of the framework&#8217;s extension points and their interactions. We develop a technique that mines a large number of code examples to discover all extension points and patterns for each framework class. Given a framework class that is being used, our approach first recommends all extension points that are available in the class. Once the developer chooses an extension point, our approach discovers all of its usage patterns and recommends the best code examples for each pattern. We evaluate the performance of our two-step recommendation using five different frameworks. </p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-499" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:499,&quot;slug&quot;:&quot;p20&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_499">
+
+	<div id="popmake-499" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_499" class="pum-title popmake-title">
+				An Empirical Study of the Long Duration of Continuous Integration Builds			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Continuous Integration (CI) allows developers to generate software builds more quickly and periodically, which helps in identifying errors at early stages. When builds are generated frequently, a long build duration may hold developers from performing other development tasks. Our initial investigation shows that many projects experience long build durations (e.g., in the scale of hours). In this research, we model long CI build durations of 63 GitHub projects to study the factors that may lead to longer CI builddurations. Our preliminary results indicate that common wisdom factors (e.g., lines of code and build configuration) do not fully explain long build durations. Therefore, we study the relationship of long build durations with CI, code, density, commit, and file factors. Our results show that test density and build jobs have a strong influence on build duration. Our research provides recommendations to developers on how to optimize the duration of their builds.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-497" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:497,&quot;slug&quot;:&quot;p19&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_497">
+
+	<div id="popmake-497" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_497" class="pum-title popmake-title">
+				Learning from imbalanced data			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>An important challenge in many real-world machine learning applications is imbalance between classes. Learning from imbalanced data is challenging due to bias of performance towards the majority class rather than the minority class of interest. This bias may exist because: (1) classification systems are often optimized and compared using performance measurements that are unsuitable for imbalance problems; (2) most learning algorithms are designed and tested on a fixed imbalance level, which may differ from operational scenarios; (3) the preference of classes is different from one application to another. In this poster, a summary of two papers from my PhD thesis is presented that includes: (1) a new ensemble learning algorithm called Progressive Boosting (PBoost). (2) a new global evaluation space for the F-measure that represent a classifier over all of its decision thresholds and a range of possible imbalance levels for the desired preference of TPR to precision.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-495" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:495,&quot;slug&quot;:&quot;p18&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_495">
+
+	<div id="popmake-495" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_495" class="pum-title popmake-title">
+				The Impact of Feature Reduction Techniques on Defect Prediction Models			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Defect prediction is an important task for preserving software quality. Most prior work on defect prediction uses software features, such as the number of lines of code, to predict whether a file or commit will be defective in the future. Feature selection and reduction techniques can help to reduce the number of features in a model. Using a small number of features avoids the problem of multicollinearity and makes the prediction models simpler. However, there do not exist studies in which the impact of feature reduction techniques on defect prediction is investigated, while several recent studies have investigated the impact of feature selection techniques on defect prediction. In our research, we study the impact of eight feature reduction techniques on the performance and the variance in performance of five supervised learning and five unsupervised defect prediction models.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-493" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:493,&quot;slug&quot;:&quot;p17&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_493">
+
+	<div id="popmake-493" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_493" class="pum-title popmake-title">
+				A survey on load testing of large-scale software systems			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Several large-scale systems have faced system failures in the past due to their inability to handle a very large number of concurrent requests. Therefore, load tests are designed to verify the scalability, robustness, and reliability of the system (apart from the functionality) to meet the demands of millions of users. In our work, we survey the state of load testing research and practice. We compare techniques, data sources and results that are used in the three phases of a load test: Design, Execution, and Analysis. We focus on the work that was published after 2013. Our work complements existing surveys on load testing.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-491" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:491,&quot;slug&quot;:&quot;p16&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_491">
+
+	<div id="popmake-491" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_491" class="pum-title popmake-title">
+				Studying the Dialogue Between Users and Developers of Free Apps in the Google Play Store			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>The popularity of mobile apps continues to grow over the past few years. Mobile app stores, such as the Google Play Store and Apple’s App Store provide a unique user feedback mechanism to app developers through app reviews. In the Google Play Store (and most recently in the Apple App Store), developers are able to respond to such user feedback. In our work, we analyze the dynamic nature of the review-response mechanism by studying 4.5 million reviews with 126,686 responses of 2,328 top free-to-download apps in the Google Play Store. One of the major findings of our study is that the assumption that reviews are static is incorrect. Our findings show that it can be worthwhile for app owners to respond to reviews, as responding may lead to an increase in the given rating. In addition, we identify four patterns of developers (e.g., developers who primarily respond to negative reviews). </p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-489" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:489,&quot;slug&quot;:&quot;p15&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_489">
+
+	<div id="popmake-489" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_489" class="pum-title popmake-title">
+				Applying Consensus Algorithms to Generate Consensual Developer Behavior			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Developer behavior is a common research topic in software engineering to spark the future maintenance and evolution of software systems. Studying developers behavior for the purpose of recommending a most common behavior is an area that captures great interest. Given this interest, our work aims to apply consensus algorithms on developers behaviors to generate a consensual behavior. We conduct a number of experiments to analyze how developers behave while performing programming task. We collect developers interaction traces (ITs) through Eclipse Mylyn and VLC video captures. To obtain best results, we perform an in-depth comparison between the results of applying each consensus algorithm. Preliminary results show that Kwiksort algorithm outperforms all other algorithms in producing most common developer behavior. This study demonstrates how using consensus algorithms can help recommend to developers a consensual behavior when performing a particular programming task.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-487" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:487,&quot;slug&quot;:&quot;p14&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_487">
+
+	<div id="popmake-487" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_487" class="pum-title popmake-title">
+				Log4Perf: Suggesting Logging Locations for Web-based Systems’ Performance Monitoring			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Logs are widely used to monitor, understand and improve software performance. However, developers often face the challenge of making logging decisions. Prior works on automated logging guidance techniques are rather general, without considering a particular goal, such as monitoring software performance. We present Log4Perf, an automated approach that provides suggestions of where to insert logging statement with the goal of monitoring web-based systems’ software performance. In particular, our approach builds and manipulates a statistical performance model to identify the locations in the source code that statistically significantly influences software performance. Our evaluation results show that Log4Perf can build well-fit statistical performance models, which can be leveraged to investigate the influence of locations in the source code on performance. Also, our approach is an ideal complement to traditional approaches that are based on software metrics or performance hotspots. Log4Perf is integrated into the release engineering process of a commercial software to provide logging suggestions on a regular basis.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-485" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:485,&quot;slug&quot;:&quot;p13&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_485">
+
+	<div id="popmake-485" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_485" class="pum-title popmake-title">
+				DLFinder: Characterizing and Detecting Duplicate Logging Code Smells			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Developers rely on software logs for varieties of tasks. Recent research on logs often only consider the appropriateness of a log as an individual item, while logs are typically analyzed in tandem. Thus we focus on studying duplicate logging code, which are log lines that have the same static text message. Such duplication in logs are potential indications of logging code smells, which may affect developers’ understanding of the system. We uncover five patterns of duplicate logging code smells by manually studying a statistical sample of duplicate logs from four large-scale open source systems. We further manually study all the code smell instances and identify the problematic and justifiable cases of the uncovered patterns. Then, we contact developers in order to verify our result. We integrated our manual study result and developers’ feedback into our static analysis tool, DLFinder, which helps developers identify and refactor duplicate logging code smells.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-483" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:483,&quot;slug&quot;:&quot;p12&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_483">
+
+	<div id="popmake-483" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_483" class="pum-title popmake-title">
+				An empirical study of obsolete knowledge on Stack Overflow			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>An enormous amount of knowledge in software engineering is accumulated on Stack Overflow. However, as time passes, knowledge embedded in answers may become obsolete. Such obsolete answers, if not identified or documented clearly, may mislead answer seekers and cause unexpected problems (e.g., using an outdated security protocol). In this paper, we study the characteristics of obsolete answers. We find that: 1) 58.4% of the obsolete answers were already obsolete when they were first posted. 2) Only 23.5% of such answers are ever updated. 3) Answers in web and mobile development tags are more likely to become obsolete. 4) 79.5% of obsolete observations are supported by evidence (e.g., version information and obsolete time). We suggest that 1) Stack Overflow should encourage the whole community to maintain obsolete answers. 2) Answerers are suggested to include the information of valid versions/time when posting answers. 3) Answer seekers are suggested to go through comments in case of answer obsolescence.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-481" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:481,&quot;slug&quot;:&quot;p11&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_481">
+
+	<div id="popmake-481" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_481" class="pum-title popmake-title">
+				Rewarding open source developers: a case study of Bountysource bounties			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Because of the voluntary nature of open source, sometimes it is hard to find a developer to work on a particular issue. However, these issues may be of high priority to others. To motivate developers to address these particular issues, people can offer monetary rewards (i.e., bounties) for addressing an issue report. To better understand how bounties can be leveraged to evolve an open source project, we investigated 3,509 Github projects&#8217; issues for which bounties ($406,425 in total) were offered on Bountysource. We collect 31 factors and build a logistic regression model to understand the relationship between the bounty and the issue-addressed likelihood. We find that (1) providing a bounty for an issue earlier on and adding a bounty label are related to an increased issue-addressing likelihood. (2) The bounty value of an issue does not have a strong relationship with the likelihood of an issue being addressed.  </p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-479" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:479,&quot;slug&quot;:&quot;p10&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_479">
+
+	<div id="popmake-479" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_479" class="pum-title popmake-title">
+				Revisiting “Understanding the Rationale for Updating a Function’s Comment”			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Code comments play a fundamental role in Software Maintenance and Evolution. As such, they need to be kept up-to-date. A decade ago, Malik et al. introduced a classification model to flag whether the comments of a function need to be updated when such a function is changed. The authors claimed that their model had an overall accuracy of 80%.  We discovered and addressed eight drawbacks in the design and evaluation of their model. In particular, we noticed that the out-of-bag performance evaluation yielded unrealistic results in all cases considered. In addition, we observed that the feature ranking tends to be biased towards the features that are important for the most-frequently occurring type of comment change (i.e., either inner or outer comments). Finally, we introduce and evaluate a simpler model and conclude that its performance is statistically similar to that of the full model and that it is more easily interpretable. </p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-477" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:477,&quot;slug&quot;:&quot;p09&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_477">
+
+	<div id="popmake-477" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_477" class="pum-title popmake-title">
+				Predicting and Prioritizing Tests that Manifest Performance Regressions at the Commit Level			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Performance issues may compromise user experiences, increase the resources cost, and cause field failures. One of the most prevalent performance issues is performance regression. Prior research proposes various automated approaches that detect performance regressions. However, the performance regression detection is conducted after the system is built and deployed. Hence, large amounts of resources are still required to locate and fix performance regressions. In our paper, we propose an approach that automatically predicts whether a test would manifest performance regression in a code commit. We conduct case studies on three open-source systems. Our results show that our approach can predict performance-regression-prone tests with high AUC values. In addition, we find that traditional size metrics are still the most important factors. On the other hand, performance-related metrics that are associated with Loop and Adding Expensive Variable are also risky for introducing performance regressions. Our approach and the study results can be leveraged by practitioners to effectively cope with performance regressions in a timely and proactive manner.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-475" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:475,&quot;slug&quot;:&quot;p08&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_475">
+
+	<div id="popmake-475" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_475" class="pum-title popmake-title">
+				Studying the Characteristics of Logging Practices in Mobile Apps: A Case Study on F-Droid			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Logging is a common practice in software development and contains rich information. However, little is known about mobile apps’ logging practices. Therefore, we conduct a case study on 1,444 open source Android apps in the F-Droid repository. We find that although mobile app logging is less pervasive than large software systems, logging is leveraged in almost all studied apps. We compare the log level of each logging statement and developers’ rationale of using the logs. All too often(over 30%), developers choose an inappropriate log level. Such inappropriate log level may prevent the useful run-time information to be recorded or may generate unnecessary logs causing performance overhead and security issues. Finally, we conduct a performance evaluation with disabling logging messages in four open-source Android apps. We observe a significant performance overhead on response time, CPU and I/O. Our results imply the need of systematic guidance to assistant in mobile logging practices.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-473" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:473,&quot;slug&quot;:&quot;p07&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_473">
+
+	<div id="popmake-473" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_473" class="pum-title popmake-title">
+				Improving the Pull Requests Review Process Using Learning-to-rank Algorithms			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>In collaborative software development platforms (such as Github and Gitlab), the role of reviewers is key to maintain the effective review process of the pull requests. However, the number of decisions that reviewers can make is far superseded by the increasing number of pull requests submissions. To help reviewers to perform more decisions, we propose a learning-to-rank (LtR) approach to recommend pull requests that can be quickly reviewed by reviewers. Our ranking approach complements the existing list of pull requests based on their likelihood of being quickly merged or rejected. We conduct empirical studies on 74 Java projects. We observe that: (1) The random forest LtR algorithm performs better than both the FIFO and the small first baselines obtained from existing pull requests prioritizing criteria, which means our LtR approach can help reviewers perform more decisions and improve their productivity. (2) The contributor&#8217;s social connections are the most influential metrics to rank pull requests that can be quickly merged.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-471" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:471,&quot;slug&quot;:&quot;p06&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_471">
+
+	<div id="popmake-471" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_471" class="pum-title popmake-title">
+				Supporting Logging Decisions Using Historical Development Knowledge			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>Software developers insert logging statements in their source code to record important runtime information. However, providing proper logging statements remains a challenging task. In this work, we firstly studied why developers make log changes in their source code. We then proposed an automated approach to provide developers with log change suggestions as soon as they commit a code change. Our automated approach can effectively suggest whether a log change is needed for a code change with an AUC of 0.84 to 0.91. We also studied how developers assign log levels to their logging statements and proposed an automated approach to help developers determine the most appropriate log level when they add a new logging statement. Our automated approach can accurately suggest the levels of logging statements with an AUC of 0.75 to 0.81. </p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-469" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:469,&quot;slug&quot;:&quot;p05&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_469">
+
+	<div id="popmake-469" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_469" class="pum-title popmake-title">
+				Specific version or version range? A study of versioning strategies for dependency management on the npm ecosystem			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>In most software ecosystems, developers use versioning statements to inform which versions of a provider package are acceptable for fulfilling a dependency. There is an ongoing debate about the benefits and challenges of using versioning statements. On the one hand, flexible versioning statements automatically upgrade a provider’s version, helping in keeping providers up-to-date. On the other hand, flexible versioning statements can introduce unexpected breaking changes. We study three different strategies used by developers to define versioning statements, ranging from accepting a large/flexible range of provider versions to a conservative strategy. Using a flexible strategy, one can expect to have more provider upgrades than other strategies while having to modify less versioning statements. Flexible packages with more than 100 providers should be aware of the possibility of larger inter-release times. Finally, the majority of the strategy shifts are from flexible to mixed and vice-versa.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-467" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:467,&quot;slug&quot;:&quot;p04&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_467">
+
+	<div id="popmake-467" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_467" class="pum-title popmake-title">
+				The impact of Using Regression Models to Build Defect Classifiers.			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>It is common practice to discretize continuous defect counts into defective and non-defective classes and use them as a target variable when building defect classifiers (discretized classifiers). However, this discretization of continuous defect counts leads to information loss that might affect the performance and interpretation of defect classifiers. Another possible approach to build defect classifiers is through the use of regression models then discretizing the predicted defect counts into defective and non-defective classes (regression-based classifiers). In this paper, we compare the performance and interpretation of defect classifiers that are built using both approaches (i.e., discretized classifiers and regression-based classifiers) across six commonly used machine learning classifiers and 17 datasets. We find that: i) Random forest based classifiers outperform other classifiers (best AUC) for both classifier building approaches; ii) In contrast to common practice, building a defect classifier using discretized defect counts does not always lead to better performance.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-465" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:465,&quot;slug&quot;:&quot;p03&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_465">
+
+	<div id="popmake-465" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_465" class="pum-title popmake-title">
+				An Empirical Study of Early Access Games on the Steam Platform			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>“Early access” is a model that allows players to purchase an unfinished version of the game. In turn, players can provide developers with early feedback. Recently, the benefits of the early access model have been questioned by the community. We conducted an empirical study on 1,182 early access games on the Steam platform to understand the characteristics, advantages and limitations of the early access model. We observe that developers update their games more frequently in the early access stage. On the other hand, the reviewing activity during the early access stage is lower than that after the early access stage. However, the percentage of positive reviews is much higher during the early access stage, suggesting that players are more tolerant of imperfections in the early access stage. Hence, we suggest developers to use the early access model for eliciting early feedback and more positive reviews to attract future customers.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<div id="pum-463" class="pum pum-overlay pum-theme-447 pum-theme-default-theme popmake-overlay click_open" data-popmake="{&quot;id&quot;:463,&quot;slug&quot;:&quot;p02&quot;,&quot;theme_id&quot;:447,&quot;cookies&quot;:[],&quot;triggers&quot;:[{&quot;type&quot;:&quot;click_open&quot;,&quot;settings&quot;:{&quot;extra_selectors&quot;:&quot;&quot;}}],&quot;mobile_disabled&quot;:null,&quot;tablet_disabled&quot;:null,&quot;meta&quot;:{&quot;display&quot;:{&quot;stackable&quot;:false,&quot;overlay_disabled&quot;:false,&quot;scrollable_content&quot;:false,&quot;disable_reposition&quot;:false,&quot;size&quot;:&quot;medium&quot;,&quot;responsive_min_width&quot;:&quot;0%&quot;,&quot;responsive_min_width_unit&quot;:false,&quot;responsive_max_width&quot;:&quot;100%&quot;,&quot;responsive_max_width_unit&quot;:false,&quot;custom_width&quot;:&quot;640px&quot;,&quot;custom_width_unit&quot;:false,&quot;custom_height&quot;:&quot;380px&quot;,&quot;custom_height_unit&quot;:false,&quot;custom_height_auto&quot;:false,&quot;location&quot;:&quot;center top&quot;,&quot;position_from_trigger&quot;:false,&quot;position_top&quot;:&quot;100&quot;,&quot;position_left&quot;:&quot;0&quot;,&quot;position_bottom&quot;:&quot;0&quot;,&quot;position_right&quot;:&quot;0&quot;,&quot;position_fixed&quot;:false,&quot;animation_type&quot;:&quot;fade&quot;,&quot;animation_speed&quot;:&quot;350&quot;,&quot;animation_origin&quot;:&quot;center top&quot;,&quot;overlay_zindex&quot;:false,&quot;zindex&quot;:&quot;1999999999&quot;},&quot;close&quot;:{&quot;text&quot;:&quot;&quot;,&quot;button_delay&quot;:&quot;0&quot;,&quot;overlay_click&quot;:false,&quot;esc_press&quot;:false,&quot;f4_press&quot;:false},&quot;click_open&quot;:[]}}" role="dialog" aria-hidden="true" aria-labelledby="pum_popup_title_463">
+
+	<div id="popmake-463" class="pum-container popmake theme-447 pum-responsive pum-responsive-medium responsive size-medium">
+
+				
+
+				            <div id="pum_popup_title_463" class="pum-title popmake-title">
+				Exploring the Use of Automated API Migrating Techniques in Practice: An Experience Report on Android			</div>
+		
+
+		
+
+				<div class="pum-content popmake-content" tabindex="0">
+			<p>When APIs evolve, consumers are left with the difficult task of migration. Studies on API migration often assume that software documentation lacks explicit information for migration guidance and is impractical for API consumers. Past research has shown that it is possible to present migration suggestions based on historical code-change information. Yet, the assumptions made by prior approaches have not been evaluated on large-scale practical systems. We report our recent practical experience migrating the use of Android APIs in FDroid apps when leveraging approaches based on documentation and historical code changes. Our experiences suggest that migration through historical code changes presents various challenges and that API documentation is undervalued. More importantly, during our practice, we experienced that the challenges of API migration lie beyond migration suggestions, in aspects such as coping with parameter type changes in new API. Future research should aim to design automated approaches to address these challenges.</p>
+		</div>
+
+
+				
+
+				            <button type="button" class="pum-close popmake-close" aria-label="Close">
+			CLOSE            </button>
+		
+	</div>
+
+</div>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-content/plugins/cf7-conditional-fields/js/scripts.js?ver=1.4.1' id='wpcf7cf-scripts-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=0.13.9' id='regenerator-runtime-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=3.15.0' id='wp-polyfill-js'></script>
+<script type='text/javascript' id='contact-form-7-js-extra'>
+/* <![CDATA[ */
+var wpcf7 = {"api":{"root":"https:\/\/semla.polymtl.ca\/wp-json\/","namespace":"contact-form-7\/v1"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-content/plugins/contact-form-7/includes/js/index.js?ver=5.6' id='contact-form-7-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-includes/js/jquery/jquery.form.min.js?ver=4.3.0' id='jquery-form-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-content/plugins/contact-form-7-add-confirm/includes/js/scripts.js?ver=5.1' id='contact-form-7-confirm-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-content/plugins/final-tiles-grid-gallery-lite/scripts/jquery.finalTilesGallery.js?ver=3.5.5' id='finalTilesGallery-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-content/themes/responsive/core/js/responsive-scripts.min.js?ver=1.2.6' id='responsive-scripts-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-content/themes/responsive/core/js/jquery.placeholder.min.js?ver=2.0.7' id='jquery-placeholder-js'></script>
+<script type='text/javascript' src='https://semla.polymtl.ca/wp-includes/js/jquery/ui/core.min.js?ver=1.13.1' id='jquery-ui-core-js'></script>
+<script type='text/javascript' id='popup-maker-site-js-extra'>
+/* <![CDATA[ */
+var pum_vars = {"version":"1.16.7","pm_dir_url":"https:\/\/semla.polymtl.ca\/wp-content\/plugins\/popup-maker\/","ajaxurl":"https:\/\/semla.polymtl.ca\/wp-admin\/admin-ajax.php","restapi":"https:\/\/semla.polymtl.ca\/wp-json\/pum\/v1","rest_nonce":null,"default_theme":"447","debug_mode":"","disable_tracking":"","home_url":"\/","message_position":"top","core_sub_forms_enabled":"1","popups":[],"analytics_route":"analytics","analytics_api":"https:\/\/semla.polymtl.ca\/wp-json\/pum\/v1"};
+var pum_sub_vars = {"ajaxurl":"https:\/\/semla.polymtl.ca\/wp-admin\/admin-ajax.php","message_position":"top"};
+var pum_popups = {"pum-454":{"triggers":[{"type":"click_open","settings":{"cookie_name":"","extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":454,"slug":"p01-2"},"pum-507":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":507,"slug":"p24"},"pum-505":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":505,"slug":"p23"},"pum-503":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":503,"slug":"p22"},"pum-501":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":501,"slug":"p21"},"pum-499":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":499,"slug":"p20"},"pum-497":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":497,"slug":"p19"},"pum-495":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":495,"slug":"p18"},"pum-493":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":493,"slug":"p17"},"pum-491":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":491,"slug":"p16"},"pum-489":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":489,"slug":"p15"},"pum-487":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":487,"slug":"p14"},"pum-485":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":485,"slug":"p13"},"pum-483":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":483,"slug":"p12"},"pum-481":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":481,"slug":"p11"},"pum-479":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":479,"slug":"p10"},"pum-477":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":477,"slug":"p09"},"pum-475":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":475,"slug":"p08"},"pum-473":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":473,"slug":"p07"},"pum-471":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":471,"slug":"p06"},"pum-469":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":469,"slug":"p05"},"pum-467":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":467,"slug":"p04"},"pum-465":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":465,"slug":"p03"},"pum-463":{"triggers":[{"type":"click_open","settings":{"extra_selectors":""}}],"cookies":[],"disable_on_mobile":false,"disable_on_tablet":false,"atc_promotion":null,"explain":null,"type_section":null,"theme_id":"447","size":"medium","responsive_min_width":"0%","responsive_max_width":"100%","custom_width":"640px","custom_height_auto":false,"custom_height":"380px","scrollable_content":false,"animation_type":"fade","animation_speed":"350","animation_origin":"center top","open_sound":"none","custom_sound":"","location":"center top","position_top":"100","position_bottom":"0","position_left":"0","position_right":"0","position_from_trigger":false,"position_fixed":false,"overlay_disabled":false,"stackable":false,"disable_reposition":false,"zindex":"1999999999","close_button_delay":"0","fi_promotion":null,"close_on_form_submission":false,"close_on_form_submission_delay":0,"close_on_overlay_click":false,"close_on_esc_press":false,"close_on_f4_press":false,"disable_form_reopen":false,"disable_accessibility":false,"theme_slug":"default-theme","id":463,"slug":"p02"}};
+/* ]]> */
+</script>
+<script type='text/javascript' src='//semla.polymtl.ca/wp-content/uploads/pum/pum-site-scripts.js?defer&#038;generated=1657648151&#038;ver=1.16.7' id='popup-maker-site-js'></script>
+</body>
+</html>
